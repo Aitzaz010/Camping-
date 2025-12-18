@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Camping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #4a90e2);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1920x1080/000000/ffffff?text=Nature+Background') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: #ffcc70;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #b8f1cc;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #ffcc70, #ff6b6b);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #ffcc70;
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            animation: slideInLeft 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #ffcc70;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #e0f7fa;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #b8f1cc;
+            transition: transform 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateX(10px);
+        }
+
+        ul li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #ffcc70;
+            transition: transform 0.3s ease;
+        }
+
+        ul li:hover::before {
+            transform: scale(1.2);
+        }
+
+        .image-box {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .image-box img {
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-box img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #ffcc70;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Image Slider */
+        .slider {
+            width: 90%;
+            max-width: 700px;
+            height: 400px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Slider indicators */
+        .indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #ffcc70;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>About Outdoor Camping</h1>
+    <p>Discover nature, peace, and adventure beyond the ordinary</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Camping</a>
+    <a href="table.html">Camping Tools</a>
+    <a href="contact.html">Booking Form</a>
+</nav>
+
+<div class="container">
+
+    <div class="section">
+        <h2>What is Outdoor Camping?</h2>
+        <p>
+            Outdoor camping is an exciting and refreshing activity where people spend time
+            living close to nature. It allows individuals to escape the busy routine of daily life
+            and enjoy peaceful environments such as forests, mountains, rivers, and open fields.
+            Camping includes activities like hiking, cooking under the open sky, observing wildlife,
+            and enjoying the beauty of nature.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to inspire people to explore the outdoors safely and responsibly.
+            We promote eco-friendly camping practices, educate campers about safety,
+            and encourage respect for nature. Our goal is to make camping enjoyable today
+            while preserving nature for future generations.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Why Choose Camping?</h2>
+        <ul>
+            <li>Reduces stress and improves mental health</li>
+            <li>Enhances physical fitness and energy</li>
+            <li>Builds teamwork and lifelong friendships</li>
+            <li>Teaches survival and outdoor skills</li>
+            <li>Creates unforgettable memories</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Experience the Beauty of Nature</h2>
+
+        <div class="slider">
+            <img src="camping 1.jpg" class="slide active" alt="Camping Scene 1">
+            <img src="camping 2.jpg" class="slide" alt="Camping Scene 2">
+            <img src="camping 3.jpg" class="slide" alt="Camping Scene 3">
+            <img src="camping 4.jpg" class="slide" alt="Camping Scene 4">
+            <div class="indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+                <div class="indicator" data-slide="3"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Outdoor Camping Group. All Rights Reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let slides = document.querySelectorAll(".slide");
+        let indicators = document.querySelectorAll(".indicator");
+        let index = 0;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            indicators.forEach(ind => ind.classList.remove("active"));
+            slides[n].classList.add("active");
+            indicators[n].classList.add("active");
+            index = n;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+
+        // Auto-rotate every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // Indicator click
+        indicators.forEach((ind, i) => {
+            ind.addEventListener('click', () => showSlide(i));
+        });
+    });
+</script>
+
+</body>
+</html>

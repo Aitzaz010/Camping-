@@ -4,4 +4,26 @@ Camping is when people go outside and live in nature for a short time, usually i
 Group Members:
 Abdullah<br> 
 Aitzaz Wajid<br>
-AbdulRehman
+AbdulRehman<br>
+
+
+#path
+Camping-/
+├── about.html
+├── contact.html
+├── index.html
+├── README.md
+├── style.css
+├── submit_booking.php
+├── table.html
+├── camping 1.jpg
+├── camping 1.mp4
+├── camping 2.jpg
+├── camping 2.mp4
+├── camping 3.jpg
+├── camping 3.mp4
+├── camping 4.jpg
+└── camping.jpg.webp
+
+
+

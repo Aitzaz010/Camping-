@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camping Tools & Prices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #4a90e2);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1920x1080/000000/ffffff?text=Gear+Background') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: #ffcc70;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #b8f1cc;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #ffcc70, #ff6b6b);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #ffcc70;
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #ffcc70;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #e0f7fa;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slideInUp 1s ease-out 1s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        th {
+            background: linear-gradient(90deg, #ffcc70, #ffb74d);
+            color: #0f2027;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        td {
+            color: #e0f7fa;
+        }
+
+        td:last-child {
+            color: #b8f1cc;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #ffcc70;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9em;
+            }
+            th, td {
+                padding: 10px;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Camping Tools & Prices</h1>
+    <p>Essential equipment for a safe camping trip</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Camping</a>
+    <a href="table.html">Camping Tools</a>
+    <a href="contact.html">Booking Form</a>
+</nav>
+
+<div class="container">
+    <h2>Camping Tools Price List</h2>
+    <p>Below is a list of commonly used camping tools along with their estimated prices.</p>
+
+    <table>
+        <tr>
+            <th>Tool Name</th>
+            <th>Description</th>
+            <th>Price (PKR)</th>
+        </tr>
+        <tr>
+            <td>Tent</td>
+            <td>Waterproof tent for 2-4 persons</td>
+            <td>15,000</td>
+        </tr>
+        <tr>
+            <td>Sleeping Bag</td>
+            <td>Warm and lightweight sleeping bag</td>
+            <td>6,000</td>
+        </tr>
+        <tr>
+            <td>Camping Stove</td>
+            <td>Portable gas stove for cooking</td>
+            <td>8,500</td>
+        </tr>
+        <tr>
+            <td>Backpack</td>
+            <td>Large capacity hiking backpack</td>
+            <td>7,000</td>
+        </tr>
+        <tr>
+            <td>Flashlight</td>
+            <td>LED flashlight with batteries</td>
+            <td>2,000</td>
+        </tr>
+        <tr>
+            <td>First Aid Kit</td>
+            <td>Basic medical supplies</td>
+            <td>3,000</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2025 Outdoor Camping Group. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
